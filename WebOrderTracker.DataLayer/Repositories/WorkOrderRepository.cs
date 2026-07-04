@@ -36,5 +36,13 @@ namespace WebOrderTracker.DataLayer.Repositories
                  .OrderByDescending(w => w.Priority)
                  .ToListAsync();
         }
+
+        public async Task<IEnumerable<WorkOrder>> GetAllActiveWorkOrders()
+        {
+            return await Context.Set<WorkOrder>()
+                 .Where(w => w.Status != WorkOrderStatus.Cancelled)
+                 .OrderByDescending(w => w.Priority)
+                 .ToListAsync();
+        }
     }
 }

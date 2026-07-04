@@ -1,19 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebOrderTracker.DataLayer.Context;
 using WebOrderTracker.DataLayer.Entities;
 using WebOrderTracker.DataLayer.Repositories.Interfaces;
 
 namespace WebOrderTracker.DataLayer.Repositories
 {
-    public class UnitOfWork : IUnitOfWork
+    /// <summary>
+    /// Work Order Tracker unit of work
+    /// </summary>
+    public class WotUnitOfWork : IUnitOfWork
     {
-        private readonly DbContext _context;
+        private readonly WoTrackerDbContext _context;
 
         public IWorkOrderRepository WorkOrders { get; private set; }
         public IRepository<Asset> Assets { get; private set; }
         public IRepository<Technician> Technicians { get; private set; }
         public IRepository<Part> Parts { get; private set; }
 
-        public UnitOfWork(DbContext context)
+        public WotUnitOfWork(WoTrackerDbContext context)
         {
             _context = context;
             WorkOrders = new WorkOrderRepository(_context);

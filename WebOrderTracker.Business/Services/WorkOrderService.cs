@@ -1,8 +1,13 @@
-﻿using WebOrderTracker.DataLayer.Entities.enums;
+﻿using WebOrderTracker.DataLayer.Entities;
+using WebOrderTracker.DataLayer.Entities.enums;
 using WebOrderTracker.DataLayer.Repositories.Interfaces;
 
 namespace WebOrderTracker.Business.Services
 {
+
+    /// <summary>
+    /// Work order service
+    /// </summary>
     public class WorkOrderService
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -27,9 +32,14 @@ namespace WebOrderTracker.Business.Services
             await _unitOfWork.CompleteAsync();
         }
 
-        public async Task GetWorkOrdersInStatus(WorkOrderStatus workOrderStatus)
+        public async Task<IEnumerable<WorkOrder>> GetWorkOrdersInStatus(WorkOrderStatus workOrderStatus)
         {
-            var workOrdersFound = await _unitOfWork.WorkOrders.GetWorkOrderInStatusAsync(workOrderStatus);
+            return await _unitOfWork.WorkOrders.GetWorkOrderInStatusAsync(workOrderStatus);
+        }
+
+        public async Task<IEnumerable<WorkOrder>> GetAllActiveWorkOrders()
+        {
+            return await _unitOfWork.WorkOrders.GetAllActiveWorkOrders();
         }
     }
 }

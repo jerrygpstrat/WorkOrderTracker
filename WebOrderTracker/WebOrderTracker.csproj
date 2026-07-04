@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WebOrderTracker.Business\WebOrderTracker.Business.csproj" />
     <ProjectReference Include="..\WebOrderTracker.Common\WebOrderTracker.Common.csproj" />
     <ProjectReference Include="..\WebOrderTracker.DataLayer\WebOrderTracker.DataLayer.csproj" />
   </ItemGroup>

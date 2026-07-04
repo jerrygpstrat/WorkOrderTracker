@@ -8,5 +8,6 @@ namespace WebOrderTracker.DataLayer.Repositories.Interfaces
         Task<WorkOrder?> GetWorkOrderWithDetailsAsync(Guid id);
         Task<IEnumerable<WorkOrder>> GetPendingWorkOrdersAsync();
         Task<IEnumerable<WorkOrder>> GetWorkOrderInStatusAsync(WorkOrderStatus workOrderStatus);
+        Task<IEnumerable<WorkOrder>> GetAllActiveWorkOrders();
     }
 }

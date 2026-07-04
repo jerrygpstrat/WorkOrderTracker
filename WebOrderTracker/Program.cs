@@ -1,8 +1,11 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using WebOrderTracker.Areas.Identity.Data;
+using WebOrderTracker.Business.Services;
 using WebOrderTracker.Common.Constants.WebOrderTracker;
 using WebOrderTracker.Data;
 using WebOrderTracker.DataLayer.Context;
+using WebOrderTracker.DataLayer.Repositories;
+using WebOrderTracker.DataLayer.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,8 +27,12 @@ builder.Services.AddDbContext<WoTrackerDbContext>(options =>
 builder.Services.AddDefaultIdentity<WebOrderTrackerUser>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
-})
-    .AddEntityFrameworkStores<ApplicationDbContext>(); // Maps UserManager to Identity tables
+}).AddEntityFrameworkStores<ApplicationDbContext>(); // Maps UserManager to Identity tables
+
+//unit f work and service 
+builder.Services.AddScoped<IUnitOfWork, WotUnitOfWork>();
+builder.Services.AddScoped<WorkOrderService>();
+
 
 var app = builder.Build();
 

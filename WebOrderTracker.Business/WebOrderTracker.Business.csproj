@@ -14,4 +14,8 @@
     <ProjectReference Include="..\WebOrderTracker.DataLayer\WebOrderTracker.DataLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dtos\Requests\" />
+  </ItemGroup>
+
 </Project>

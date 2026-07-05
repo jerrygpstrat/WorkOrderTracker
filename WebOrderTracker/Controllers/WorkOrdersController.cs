@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+using WebOrderTracker.Business.Dtos.Requests;
 using WebOrderTracker.Business.Services;
 
 namespace WebOrderTracker.Controllers
@@ -9,14 +10,15 @@ namespace WebOrderTracker.Controllers
 
         public WorkOrdersController(WorkOrderService workOrderService) : base(workOrderService) { }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-
-
-
             return View();
         }
 
+        public  IActionResult AddNewWorkOrder()
+        {
+            return View();
+        }
 
         /// <summary>
         /// Get all active orders

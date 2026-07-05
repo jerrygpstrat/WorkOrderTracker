@@ -14,6 +14,8 @@ namespace WebOrderTracker.DataLayer.Entities
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public double HoursWorked => (EndTime - StartTime).TotalHours;
+
+        [StringLength(512)]
         public string Notes { get; set; } = string.Empty;
     }
 }

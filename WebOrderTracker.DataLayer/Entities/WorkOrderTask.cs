@@ -9,6 +9,8 @@ namespace WebOrderTracker.DataLayer.Entities
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
         public Guid WorkOrderId { get; set; }
+
+        [StringLength(512)]
         public string Description { get; set; } = string.Empty;
         public bool IsCompleted { get; set; }
         public int SequenceOrder { get; set; }

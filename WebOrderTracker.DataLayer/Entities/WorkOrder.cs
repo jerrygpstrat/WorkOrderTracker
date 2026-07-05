@@ -15,11 +15,17 @@ namespace WebOrderTracker.DataLayer.Entities
         public WorkOrderStatus Status { get; set; } = WorkOrderStatus.New;
         public WorkOrderPriority Priority { get; set; } = WorkOrderPriority.Medium;
 
+        public bool IsWorkPaid { get; set; }
+
+
         // Dates
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? StartedAt { get; set; }
         public DateTime? CompletedAt { get; set; }
         public DateTime TargetCompletionDate { get; set; }
+
+        public DateTime PaidDate { get; set; }
+
 
         // Relationships
         public Guid AssetId { get; set; }

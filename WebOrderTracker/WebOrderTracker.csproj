@@ -14,6 +14,12 @@
     <None Include="DBConnections.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="wwwroot\assets\bt\bootstrap-table-es-MX.js" />
+    <None Include="wwwroot\assets\bt\bootstrap-table-eu-EU.js" />
+    <None Include="wwwroot\assets\bt\bootstrap-table.css" />
+    <None Include="wwwroot\assets\bt\bootstrap-table.js" />
+    <None Include="wwwroot\assets\bt\bt-export.js" />
+    <None Include="wwwroot\assets\bt\table-export.js" />
   </ItemGroup>
 
   <ItemGroup>

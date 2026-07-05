@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using WebOrderTracker.DataLayer.Entities;
 
-namespace WebOrderTracker.DataLayer.Entities
+namespace WebOrderTracker.Business
 {
-    [Table("WorkOrderParts")]
-    public class WorkOrderPart
+    public class WorkOrderPartDto
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public Guid WorkOrderId { get; set; }

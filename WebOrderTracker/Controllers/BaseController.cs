@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebOrderTracker.Business.Dtos;
 using WebOrderTracker.Business.Services;
-using WebOrderTracker.DataLayer.Entities;
 
 namespace WebOrderTracker.Controllers
 {
@@ -17,7 +17,7 @@ namespace WebOrderTracker.Controllers
         /// Get all active Orders from Business
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<WorkOrder>> GetActiveOrders()
+        public async Task<IEnumerable<WorkOrderDto>> GetActiveOrders()
         {
           return await _workOrderService.GetAllActiveWorkOrders();
         }

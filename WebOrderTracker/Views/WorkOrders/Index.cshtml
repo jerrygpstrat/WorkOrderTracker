@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Work Orders";
+}
+
+
+﻿
+<link href="~/assets/bt/bootstrap-table.css" rel="stylesheet" />
+<script src="~/assets/bt/bootstrap-table.js"></script>
+<script src="~/assets/bt/table-export.js"></script>
+<script src="~/assets/bt/bt-export.js"></script>
+<script src="~/assets/bt/bootstrap-table-es-MX.js"></script>
+
+
+<h2>Work Orders</h2>
+<p class="lead">Browse your work orders</p>
+<hr />
+
+<table id="workOrdersTable"
+       data-toolbar="#toolbar"
+       data-show-refresh="true"
+       data-show-toggle="true"
+       data-show-fullscreen="true"
+       data-show-columns="true"
+       data-show-columns-toggle-all="true"
+       data-detail-view="true"
+       data-show-export="true"
+       data-click-to-select="true"
+       data-detail-formatter="detailFormatter"
+       data-minimum-count-columns="2"
+       data-show-pagination-switch="false"
+       data-pagination="true"
+       data-id-field="partId"
+       data-page-list="[10, 25, 50, 100, all]"
+       data-show-footer="false"
+       data-side-pagination="client"
+       data-url="/WorkOrders/GetAllActiveOrders"
+       data-response-handler="">
+</table>
+
+
+
+<script>
+    const $table = $('#workOrdersTable');
+    $(function () {
+        $table.bootstrapTable('destroy').bootstrapTable({
+            height: 1000,
+            idField: "id",
+            icons: {
+                paginationSwitchDown: 'fa-caret-square-down',
+                paginationSwitchUp: 'fa-caret-square-up',
+                refresh: 'fa-refresh',
+                toggleOff: 'fa-toggle-off',
+                toggleOn: 'fa-toggle-on',
+                columns: 'fa-th-list',
+                fullscreen: 'fa-arrows-alt',
+                detailOpen: 'fa-plus',
+                detailClose: 'fa-minus',
+                export: 'fa-download'
+            },
+            locale: 'es-MX',
+            columns: [
+                [
+                    { field: 'state', checkbox: true, align: 'center', enabled: false },
+                    { field: 'orderNumber', title: 'Order Number', sortable: false, align: 'center' },
+                    { field: 'title', title: 'Title', sortable: false, align: 'center' },
+                    { field: 'description', title: 'Description', sortable: false, align: 'center' }
+                ]
+            ]
+        });
+    });
+</script>
+
+
+@section Scripts {
+
+}
+
+
+

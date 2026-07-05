@@ -670,23 +670,23 @@
 	});
 
 	/**
-	 * Bootstrap Table Basque (Basque Country) translation
-	 * Author: Iker Ibarguren Berasaluze<ikerib@gmail.com>
+	 * Bootstrap Table English translation
+	 * Author: Zhixin Wen<wenzhixin2010@gmail.com>
 	 */
 
-	$.fn.bootstrapTable.locales['eu-EU'] = {
+	$.fn.bootstrapTable.locales['en-US'] = {
 		formatLoadingMessage: function formatLoadingMessage() {
-			return 'Itxaron mesedez';
+			return 'Loading, please wait';
 		},
 		formatRecordsPerPage: function formatRecordsPerPage(pageNumber) {
-			return "".concat(pageNumber, " emaitza orriko.");
+			return "".concat(pageNumber, " rows per page");
 		},
 		formatShowingRows: function formatShowingRows(pageFrom, pageTo, totalRows, totalNotFiltered) {
 			if (totalNotFiltered !== undefined && totalNotFiltered > 0 && totalNotFiltered > totalRows) {
-				return "".concat(totalRows, " erregistroetatik ").concat(pageFrom, "etik ").concat(pageTo, "erakoak erakusten (filtered from ").concat(totalNotFiltered, " total rows)");
+				return "Showing ".concat(pageFrom, " to ").concat(pageTo, " of ").concat(totalRows, " rows (filtered from ").concat(totalNotFiltered, " total rows)");
 			}
 
-			return "".concat(totalRows, " erregistroetatik ").concat(pageFrom, "etik ").concat(pageTo, "erakoak erakusten.");
+			return "Showing ".concat(pageFrom, " to ").concat(pageTo, " of ").concat(totalRows, " rows");
 		},
 		formatSRPaginationPreText: function formatSRPaginationPreText() {
 			return 'previous page';
@@ -704,13 +704,13 @@
 			return 'Clear Search';
 		},
 		formatSearch: function formatSearch() {
-			return 'Bilatu';
+			return 'Search';
 		},
 		formatNoMatches: function formatNoMatches() {
-			return 'Ez da emaitzarik aurkitu';
+			return 'No matching records found';
 		},
 		formatPaginationSwitch: function formatPaginationSwitch() {
-			return 'Ezkutatu/Erakutsi orrikatzea';
+			return 'Hide/Show pagination';
 		},
 		formatPaginationSwitchDown: function formatPaginationSwitchDown() {
 			return 'Show pagination';
@@ -719,10 +719,10 @@
 			return 'Hide pagination';
 		},
 		formatRefresh: function formatRefresh() {
-			return 'Eguneratu';
+			return 'Refresh';
 		},
 		formatToggle: function formatToggle() {
-			return 'Ezkutatu/Erakutsi';
+			return 'Toggle';
 		},
 		formatToggleOn: function formatToggleOn() {
 			return 'Show card view';
@@ -731,7 +731,7 @@
 			return 'Hide card view';
 		},
 		formatColumns: function formatColumns() {
-			return 'Zutabeak';
+			return 'Columns';
 		},
 		formatColumnsToggleAll: function formatColumnsToggleAll() {
 			return 'Toggle all';
@@ -740,7 +740,7 @@
 			return 'Fullscreen';
 		},
 		formatAllRows: function formatAllRows() {
-			return 'Guztiak';
+			return 'All';
 		},
 		formatAutoRefresh: function formatAutoRefresh() {
 			return 'Auto Refresh';
@@ -767,6 +767,6 @@
 			return 'Show controls';
 		}
 	};
-	$.extend($.fn.bootstrapTable.defaults, $.fn.bootstrapTable.locales['eu-EU']);
+	$.extend($.fn.bootstrapTable.defaults, $.fn.bootstrapTable.locales['en-US']);
 
 })));

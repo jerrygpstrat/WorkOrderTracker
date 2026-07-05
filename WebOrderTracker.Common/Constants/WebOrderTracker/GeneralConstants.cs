@@ -20,7 +20,7 @@ namespace WebOrderTracker.Common.Constants.WebOrderTracker
         public static string GetConnectionStringAsync(string key)
         {
             // 1. Specify the path to your JSON file
-            string filePath = "DbConnections.json";
+            string filePath = Path.Combine(AppContext.BaseDirectory, "DbConnections.json");
 
             // 2. Open a file stream for efficient reading
             using FileStream openStream = File.OpenRead(filePath);

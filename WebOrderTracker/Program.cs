@@ -13,7 +13,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
 
-string connectionString = GeneralConstants.RemoteDbConnection;
+// builder.Configuration.AddJsonFile("DbConnections.json", optional: false, reloadOnChange: true);
+
+string connectionString = GeneralConstants.RemoteDBConnection;
 
 // 2. Register separate Identity Database Context
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

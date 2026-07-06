@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebOrderTracker.DataLayer.Context;
 
@@ -11,9 +12,11 @@ using WebOrderTracker.DataLayer.Context;
 namespace WebOrderTracker.DataLayer.Migrations
 {
     [DbContext(typeof(WoTrackerDbContext))]
-    partial class WoTrackerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260706223245_AppVars")]
+    partial class AppVars
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,10 +43,6 @@ namespace WebOrderTracker.DataLayer.Migrations
                         .IsRequired()
                         .HasMaxLength(32)
                         .HasColumnType("nvarchar(32)");
-
-                    b.Property<string>("UsePrefix")
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
 
                     b.Property<string>("Value")
                         .IsRequired()

@@ -1,5 +1,5 @@
-﻿using WebOrderTracker.DataLayer.Entities;
-using WebOrderTracker.DataLayer.Entities.enums;
+﻿using WebOrderTracker.Common.Enums;
+using WebOrderTracker.DataLayer.Entities;
 
 namespace WebOrderTracker.DataLayer.Repositories.Interfaces
 {

@@ -25,11 +25,15 @@ namespace WebOrderTracker.Controllers
           return await _workOrderService.GetAllActiveWorkOrders();
         }
 
-
         public async Task<WorkOrderDto> CreateNewWorkOrder(NewWorkOrderViewModel model)
         {
             var modelDto = model.Adapt<WorkOrderDto>();
             return await _workOrderService.CreateWorkOrderAsync(modelDto);
+        }
+
+        public async Task<string> GetNewWorkOrderNumber(string key = "WONumberSequence")
+        {
+            return await _workOrderService.GetNextWordOrderNumber(key);
         }
     }
 }

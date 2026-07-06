@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WebOrderTracker.DataLayer.Context;
+﻿using WebOrderTracker.DataLayer.Context;
 using WebOrderTracker.DataLayer.Entities;
 using WebOrderTracker.DataLayer.Repositories.Interfaces;
 
@@ -16,6 +15,8 @@ namespace WebOrderTracker.DataLayer.Repositories
         public IRepository<Asset> Assets { get; private set; }
         public IRepository<Technician> Technicians { get; private set; }
         public IRepository<Part> Parts { get; private set; }
+        public IRepository<AppVar> AppVars { get; private set; }
+
 
         public WotUnitOfWork(WoTrackerDbContext context)
         {
@@ -24,6 +25,7 @@ namespace WebOrderTracker.DataLayer.Repositories
             Assets = new Repository<Asset>(_context);
             Technicians = new Repository<Technician>(_context);
             Parts = new Repository<Part>(_context);
+            AppVars = new Repository<AppVar>(_context);
         }
 
         public async Task<int> CompleteAsync()

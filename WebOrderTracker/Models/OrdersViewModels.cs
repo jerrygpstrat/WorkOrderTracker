@@ -10,7 +10,7 @@ namespace WebOrderTracker.Business.Dtos.Requests
     {
         [Required(ErrorMessage = "Please enter a title for the work order.")]
         [StringLength(100, ErrorMessage = "The title cannot exceed 100 characters.")]
-        public required string Title { get; set; }
+        public string? Title { get; set; }
 
         [Required(ErrorMessage = "Please enter a title for the work order.")]
         [StringLength(100, ErrorMessage = "The title cannot exceed 100 characters.")]

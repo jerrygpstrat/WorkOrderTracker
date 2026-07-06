@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
+﻿using MapsterMapper;
+using Microsoft.AspNetCore.Mvc;
+using WebOrderTracker.Business.Dtos;
 using WebOrderTracker.Business.Dtos.Requests;
 using WebOrderTracker.Business.Services;
 
@@ -7,17 +8,35 @@ namespace WebOrderTracker.Controllers
 {
     public class WorkOrdersController : BaseController
     {
-
-        public WorkOrdersController(WorkOrderService workOrderService) : base(workOrderService) { }
+        public WorkOrdersController(WorkOrderService workOrderService, IMapper mapper) : base(workOrderService, mapper) { }
 
         public IActionResult Index()
         {
             return View();
         }
 
-        public  IActionResult AddNewWorkOrder()
+        [HttpGet]
+        public  IActionResult NewWorkOrder()
         {
-            return View();
+            NewWorkOrderViewModel newWordOrder = new NewWorkOrderViewModel();
+            return View(newWordOrder);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken] 
+        public async Task<IActionResult> NewWorkOrder(NewWorkOrderViewModel model)
+        {
+            // If validation fails (e.g., missing required fields), return the view 
+            // with the input data preserved and validation messages displayed.
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            await CreateNewWorkOrder(model);
+
+            // 3. Redirect back to an index or confirmation page to prevent duplicate submissions (PRG Pattern)
+            return RedirectToAction("Index", "Home");
         }
 
         /// <summary>

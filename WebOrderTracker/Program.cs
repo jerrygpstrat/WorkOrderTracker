@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Mapster;
+using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using WebOrderTracker.Areas.Identity.Data;
 using WebOrderTracker.Business.Services;
 using WebOrderTracker.Common.Constants.WebOrderTracker;
@@ -31,10 +34,25 @@ builder.Services.AddDefaultIdentity<WebOrderTrackerUser>(options =>
     options.SignIn.RequireConfirmedAccount = false;
 }).AddEntityFrameworkStores<ApplicationDbContext>(); // Maps UserManager to Identity tables
 
-//unit f work and service 
+//unity or work and service 
 builder.Services.AddScoped<IUnitOfWork, WotUnitOfWork>();
 builder.Services.AddScoped<WorkOrderService>();
 
+// ==========================================
+// 1. REGISTER MAPSTER DEPENDENCIES
+// ==========================================
+
+// Get global Mapster settings configuration
+var mapsterConfig = TypeAdapterConfig.GlobalSettings;
+
+// Scan the current assembly to discover your mapping profiles (classes implementing IRegister)
+mapsterConfig.Scan(Assembly.GetExecutingAssembly());
+
+// Register the configuration object as a singleton
+builder.Services.AddSingleton(mapsterConfig);
+
+// Register the service mapper implementation so you can inject IMapper into your service/controllers
+builder.Services.AddScoped<IMapper, ServiceMapper>();
 
 var app = builder.Build();
 

@@ -10,8 +10,13 @@ namespace WebOrderTracker.DataLayer.Entities
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
         public string OrderNumber { get; set; } = string.Empty;
+
+        [StringLength(128)]
         public string Title { get; set; } = string.Empty;
+
+        [StringLength(1024)]
         public string Description { get; set; } = string.Empty;
+
         public WorkOrderStatus Status { get; set; } = WorkOrderStatus.New;
         public WorkOrderPriority Priority { get; set; } = WorkOrderPriority.Medium;
 

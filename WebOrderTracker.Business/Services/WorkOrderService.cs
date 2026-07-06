@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using WebOrderTracker.Business.Dtos;
+using WebOrderTracker.DataLayer.Entities;
 using WebOrderTracker.DataLayer.Entities.enums;
 using WebOrderTracker.DataLayer.Repositories.Interfaces;
 
@@ -43,6 +44,18 @@ namespace WebOrderTracker.Business.Services
         {
             var foundOrders = await _unitOfWork.WorkOrders.GetAllActiveWorkOrders();
             return foundOrders.Adapt<IEnumerable<WorkOrderDto>>();
+        }
+
+        public async Task<WorkOrderDto> CreateWorkOrderAsync(WorkOrderDto model)
+        {
+            //TODO: verify for completion
+            var dbModel = model.Adapt<WorkOrder>();
+            await _unitOfWork.WorkOrders.AddAsync(dbModel);
+            await _unitOfWork.CompleteAsync();
+
+            var resultDto = dbModel.Adapt<WorkOrderDto>();
+
+            return resultDto;
         }
     }
 }

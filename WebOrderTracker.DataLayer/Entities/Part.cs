@@ -9,6 +9,8 @@ namespace WebOrderTracker.DataLayer.Entities
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
         public string SKU { get; set; } = string.Empty;
+
+        [StringLength(256)]
         public string Name { get; set; } = string.Empty;
 
         [Column(TypeName = "decimal(18,2)")]

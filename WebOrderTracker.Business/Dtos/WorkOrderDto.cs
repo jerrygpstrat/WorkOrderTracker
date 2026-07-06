@@ -24,7 +24,8 @@ namespace WebOrderTracker.Business.Dtos
         public DateTime? CompletedAt { get; set; }
         public DateTime TargetCompletionDate { get; set; }
 
-        public DateTime PaidDate { get; set; }
+        public DateTime PaydDate { get; set; }
+        public DateTime ExpectedPayDate { get; set; }
 
         // Relationships
         public Guid AssetId { get; set; }
@@ -37,7 +38,5 @@ namespace WebOrderTracker.Business.Dtos
         public ICollection<WorkOrderTaskDto> Tasks { get; set; } = new List<WorkOrderTaskDto>();
         public ICollection<WorkOrderPartDto> PartsUsed { get; set; } = new List<WorkOrderPartDto>();
         public ICollection<LaborLogDto> LaborLogs { get; set; } = new List<LaborLogDto>();
-
-
     }
 }

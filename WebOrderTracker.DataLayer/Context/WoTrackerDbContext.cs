@@ -61,6 +61,27 @@ namespace WebOrderTracker.DataLayer.Context
                 .HasIndex(w => w.OrderNumber)
                 .IsUnique();
 
+            // string lengths
+            modelBuilder.Entity<WorkOrder>()
+                .Property(w => w.Title)
+                .HasMaxLength(128);
+
+            modelBuilder.Entity<WorkOrder>()
+                .Property(w => w.Description)
+                .HasMaxLength(1024);
+
+            modelBuilder.Entity<WorkOrderTask>()
+                .Property(t => t.Description)
+                .HasMaxLength(512);
+
+            modelBuilder.Entity<Part>()
+                .Property(t => t.Name)
+                .HasMaxLength(256);
+            
+            modelBuilder.Entity<LaborLog>()
+                .Property(t => t.Notes)
+                .HasMaxLength(512);
+
             // Ensure Part SKU is unique so inventory isn't duplicated
             modelBuilder.Entity<Part>()
                 .HasIndex(p => p.SKU)

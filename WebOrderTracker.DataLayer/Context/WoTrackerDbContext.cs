@@ -17,6 +17,7 @@ namespace WebOrderTracker.DataLayer.Context
         public DbSet<WorkOrderTask> WorkOrderTasks { get; set; } = null!;
         public DbSet<WorkOrderPart> WorkOrderParts { get; set; } = null!;
         public DbSet<LaborLog> LaborLogs { get; set; } = null!;
+        public DbSet<AppVar> AppVars { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

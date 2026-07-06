@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebOrderTracker.Common.Enums;
 using WebOrderTracker.DataLayer.Entities;
-using WebOrderTracker.DataLayer.Entities.enums;
 using WebOrderTracker.DataLayer.Repositories.Interfaces;
 
 namespace WebOrderTracker.DataLayer.Repositories
@@ -13,12 +13,12 @@ namespace WebOrderTracker.DataLayer.Repositories
         public async Task<WorkOrder?> GetWorkOrderWithDetailsAsync(Guid id)
         {
             return await Context.Set<WorkOrder>()
-                .Include(w => w.Asset)
-                .Include(w => w.AssignedTechnician)
                 .Include(w => w.Tasks)
                 .Include(w => w.PartsUsed).ThenInclude(p => p.Part)
                 .Include(w => w.LaborLogs)
                 .FirstOrDefaultAsync(w => w.Id == id);
+                //.Include(w => w.Asset)
+                //.Include(w => w.AssignedTechnician)
         }
 
         public async Task<IEnumerable<WorkOrder>> GetPendingWorkOrdersAsync()

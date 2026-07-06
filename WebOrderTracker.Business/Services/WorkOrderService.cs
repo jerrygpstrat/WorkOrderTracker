@@ -1,7 +1,8 @@
 ﻿using Mapster;
+using System.Net.Http.Headers;
 using WebOrderTracker.Business.Dtos;
+using WebOrderTracker.Common.Enums;
 using WebOrderTracker.DataLayer.Entities;
-using WebOrderTracker.DataLayer.Entities.enums;
 using WebOrderTracker.DataLayer.Repositories.Interfaces;
 
 namespace WebOrderTracker.Business.Services
@@ -23,8 +24,8 @@ namespace WebOrderTracker.Business.Services
         {
             // 1. Fetch the complete graph using custom repo method
             var workOrder = await _unitOfWork.WorkOrders.GetWorkOrderWithDetailsAsync(workOrderId);
-            
-            if (workOrder == null) 
+
+            if (workOrder == null)
                 throw new Exception("We could not assign WorkOrders");
 
             // 2. Call the encapsulated domain logic inside your entity
@@ -56,6 +57,37 @@ namespace WebOrderTracker.Business.Services
             var resultDto = dbModel.Adapt<WorkOrderDto>();
 
             return resultDto;
+        }
+
+        public async Task<string> GetNextWordOrderNumber(string keyId)
+        {
+            string fResult = string.Empty;
+            var foundkey = await _unitOfWork.AppVars.FindFirstAsync(v => v.Name == keyId);
+
+            if (foundkey != null)
+            {
+                Int32.TryParse(foundkey.Value, out var result);
+                result += 1;
+                string newFolio = result.ToString().PadLeft(6, '0');
+
+                // We update the order number 
+                foundkey.Value = result.ToString();
+                _unitOfWork.AppVars.Update(foundkey);
+                await _unitOfWork.CompleteAsync();
+
+                fResult = string.IsNullOrEmpty(foundkey.UsePrefix) ? newFolio : $"{foundkey.UsePrefix}{newFolio}";
+            }
+            else
+            {
+                // if not found it is new
+                await _unitOfWork.AppVars.AddAsync(new AppVar { Id = new Guid(), ConvertsTo = "string", Name = keyId, UsePrefix = "WOT-", Value = "1" });
+                await _unitOfWork.CompleteAsync();
+
+                fResult = "WOT-000001";
+
+            }
+
+            return fResult;
         }
     }
 }

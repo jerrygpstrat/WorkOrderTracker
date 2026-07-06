@@ -1,6 +1,5 @@
 ﻿using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
-using WebOrderTracker.Business.Dtos;
 using WebOrderTracker.Business.Dtos.Requests;
 using WebOrderTracker.Business.Services;
 
@@ -18,7 +17,17 @@ namespace WebOrderTracker.Controllers
         [HttpGet]
         public  IActionResult NewWorkOrder()
         {
-            NewWorkOrderViewModel newWordOrder = new NewWorkOrderViewModel();
+            var nextWorkOrder = GetNewWorkOrderNumber().Result;
+
+            NewWorkOrderViewModel newWordOrder = new NewWorkOrderViewModel {
+             ExpectedPayDate = DateTime.Now,
+             TargetCompletionDate = DateTime.Now,
+             Title = string.Empty,
+             Description = string.Empty,
+             Priority = WebOrderTracker.Common.Enums.WorkOrderPriority.Medium,
+             Status = WebOrderTracker.Common.Enums.WorkOrderStatus.New,
+             OrderNumber = nextWorkOrder 
+            };
             return View(newWordOrder);
         }
 

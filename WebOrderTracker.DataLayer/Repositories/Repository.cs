@@ -21,8 +21,18 @@ namespace WebOrderTracker.DataLayer.Repositories
         public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate) =>
             await Context.Set<TEntity>().Where(predicate).ToListAsync();
 
+        public async Task<TEntity> FindFirstAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await Context.Set<TEntity>().FirstOrDefaultAsync(predicate); 
+        }
+
         public async Task AddAsync(TEntity entity) => await Context.Set<TEntity>().AddAsync(entity);
 
         public void Remove(TEntity entity) => Context.Set<TEntity>().Remove(entity);
+
+        public void Update(TEntity entity)
+        {
+            Context.Set<TEntity>().Update(entity);
+        }
     }
 }

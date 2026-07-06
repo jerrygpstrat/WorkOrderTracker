@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WebOrderTracker.DataLayer.Entities.enums;
+using WebOrderTracker.Common.Enums;
 
 namespace WebOrderTracker.DataLayer.Entities
 {
@@ -33,11 +33,11 @@ namespace WebOrderTracker.DataLayer.Entities
 
 
         // Relationships
-        public Guid AssetId { get; set; }
-        public Asset Asset { get; set; } = null!;
+        //public Guid AssetId { get; set; }
+        //public Asset Asset { get; set; } = null!;
 
-        public Guid? AssignedTechnicianId { get; set; }
-        public Technician? AssignedTechnician { get; set; }
+        //public Guid? AssignedTechnicianId { get; set; }
+        //public Technician? AssignedTechnician { get; set; }
 
         // Child Collections
         public ICollection<WorkOrderTask> Tasks { get; set; } = new List<WorkOrderTask>();

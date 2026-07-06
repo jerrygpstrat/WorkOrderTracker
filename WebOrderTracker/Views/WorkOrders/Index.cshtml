@@ -44,7 +44,8 @@
     const $table = $('#workOrdersTable');
     $(function () {
         $table.bootstrapTable('destroy').bootstrapTable({
-            height: 1000,
+            height: 800,
+            width: 800,
             idField: "id",
             icons: {
                 paginationSwitchDown: 'fa-caret-square-down',
@@ -61,10 +62,10 @@
             locale: 'us-US',
             columns: [
                 [
-                    { field: 'state', checkbox: true, align: 'left', enabled: false },
-                    { field: 'orderNumber', title: 'Order Number', sortable: false, align: 'left' },
-                    { field: 'title', title: 'Title', sortable: false, align: 'left' },
-                    { field: 'description', title: 'Description', sortable: false, align: 'left' }
+                    { field: 'state', checkbox: true, align: 'left', enabled: false, colspan:1 },
+                    { field: 'orderNumber', title: 'Order Number', sortable: false, align: 'left', colspan:1 },
+                    { field: 'title', title: 'Title', sortable: false, align: 'left', colspan:1 },
+                    { field: 'description', title: 'Description', sortable: false, align: 'left', colspan:1 }
                 ]
             ]
         });
@@ -72,9 +73,5 @@
 </script>
 
 
-@section Scripts {
-
-}
-
-
+@section Scripts {}
 

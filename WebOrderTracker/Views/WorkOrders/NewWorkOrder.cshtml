@@ -4,55 +4,72 @@
     ViewData["Title"] = "Add New Work Order";
 }
 
-<h1>Add new work order</h1>
+<div class="container">
+    <div class="row bg-light col-md-8">
+        <h1>Add new work order</h1>
+        <h4 class="lead">Enter the information for the new work order</h4>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <form asp-action="NewWorkOrder">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group m-1">
+                    <label asp-for="OrderNumber" class="control-label mb-1">Order Number:</label>
+                    <input asp-for="OrderNumber" class="form-control" />
+                    <span asp-validation-for="OrderNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group m-1">
+                    <label asp-for="Title" class="control-label mb-1">Title:</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group m-1">
+                    <label asp-for="Description" class="control-label mb-1">Description:</label>
+                    <textarea asp-for="Description" class="form-control" rows="4" style="resize: none;"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group m-1">
+                    <label asp-for="Status" class="control-label mb-1">Status:</label>
+                    <select asp-for="Status"
+                            asp-items="Html.GetEnumSelectList<WebOrderTracker.Common.Enums.WorkOrderStatus>()"
+                            class="form-control w-auto">
+                        <option value="">-- Select Status --</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group m-1">
+                    <label asp-for="Priority" class="control-label mb-1">Priority:</label>
+                    <select asp-for="Priority"
+                            asp-items="Html.GetEnumSelectList<WebOrderTracker.Common.Enums.WorkOrderPriority>()"
+                            class="form-control w-auto">
+                        <option value="">-- Select Priority --</option>
+                    </select>
+                    <span asp-validation-for="Priority" class="text-danger"></span>
+                </div>
+                <div class="form-grou m-1">
+                    <label asp-for="TargetCompletionDate" class="control-label mb-1">Target completion date:</label>
+                    <input asp-for="TargetCompletionDate" asp-format="{0:yyyy-MM-dd}" class="form-control w-auto" />
+                    <span asp-validation-for="TargetCompletionDate" class="text-danger"></span>
+                </div>
+                <div class="form-group m-1">
+                    <label asp-for="ExpectedPayDate" class="control-label mb-1">Expected pay date:</label>
+                    <input asp-for="ExpectedPayDate" asp-format="{0:yyyy-MM-dd}" class="form-control w-auto" />
+                    <span asp-validation-for="ExpectedPayDate" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-4 border rounded p-2 bg-light">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
 
-<h4>NewWorkOrderViewModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="NewWorkOrder">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Priority" class="control-label"></label>
-                <input asp-for="Priority" class="form-control" />
-                <span asp-validation-for="Priority" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TargetCompletionDate" class="control-label"></label>
-                <input asp-for="TargetCompletionDate" class="form-control" />
-                <span asp-validation-for="TargetCompletionDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExpectedPayDate" class="control-label"></label>
-                <input asp-for="ExpectedPayDate" class="form-control" />
-                <span asp-validation-for="ExpectedPayDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div>
+        <a asp-action="Index">Back to List</a>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

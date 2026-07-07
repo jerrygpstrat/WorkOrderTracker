@@ -38,9 +38,6 @@
        data-url="/WorkOrders/GetAllActiveOrders"
        data-response-handler="">
 </table>
-
-
-
 <script>
     const $table = $('#workOrdersTable');
     $(function () {
@@ -66,7 +63,10 @@
                     { field: 'state', checkbox: true, align: 'left', enabled: false, colspan: 1 },
                     { field: 'orderNumber', title: 'Order Number', sortable: false, align: 'left', colspan: 1 },
                     { field: 'title', title: 'Title', sortable: false, align: 'left', colspan: 1 },
-                    { field: 'description', title: 'Description', sortable: false, align: 'left', colspan: 1 }
+                    { field: 'description', title: 'Description', sortable: false, align: 'left', colspan: 1 },
+                    { field: 'statusString', title: 'Status', sortable: false, align: 'left', colspan: 1 },
+                    { field: 'priorityString', title: 'Priority', sortable: false, align: 'left', colspan: 1 },
+                    { field: 'isWorkPaidString', title: 'Is Work Paid', sortable: false, align: 'left', colspan: 1 }
                 ]
             ]
         });

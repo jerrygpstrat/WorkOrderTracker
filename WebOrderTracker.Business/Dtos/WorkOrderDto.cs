@@ -18,6 +18,28 @@ namespace WebOrderTracker.Business.Dtos
 
         public bool IsWorkPaid { get; set; }
 
+        public string StatusString
+        {
+            get
+            {
+                return Status.ToString();
+            }
+        }
+        public string PriorityString
+        {
+            get
+            {
+                return Priority.ToString();
+            }
+        }
+
+        public string IsWorkPaidString
+        {
+            get
+            {
+                return IsWorkPaid ? "Yes" : "No";
+            }
+        }
         // Dates
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? StartedAt { get; set; }

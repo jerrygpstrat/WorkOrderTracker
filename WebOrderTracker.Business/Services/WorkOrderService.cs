@@ -67,6 +67,19 @@ namespace WebOrderTracker.Business.Services
             if (foundkey != null)
             {
                 Int32.TryParse(foundkey.Value, out var result);
+
+                string originalFolio = result.ToString().PadLeft(6, '0');
+                var foundWorkOrderWithLastFolio = await _unitOfWork.WorkOrders.FindFirstAsync(w => w.OrderNumber.EndsWith(originalFolio));
+
+                if (foundWorkOrderWithLastFolio == null)
+                {
+                    // that folio has not been used !!
+                    if (!string.IsNullOrEmpty(foundkey.UsePrefix))
+                        return $"{foundkey.UsePrefix}{originalFolio}";
+                    else
+                        return originalFolio;
+                }
+
                 result += 1;
                 string newFolio = result.ToString().PadLeft(6, '0');
 

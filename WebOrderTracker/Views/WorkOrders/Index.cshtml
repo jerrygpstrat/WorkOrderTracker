@@ -11,9 +11,10 @@
 <script src="~/assets/bt/bootstrap-table-en-US.js"></script>
 <link href="~/assets/fa/css/font-awesome.css" rel="stylesheet" />
 
-
-<h2>Work Orders</h2>
-<p class="lead">Browse your work orders</p>
+<div class="row bg-light border col-md-12 text-center">
+    <h2>Work Orders</h2>
+    <p class="lead">Browse your work orders</p>
+</div>
 <hr />
 
 <table id="workOrdersTable"
@@ -62,10 +63,10 @@
             locale: 'us-US',
             columns: [
                 [
-                    { field: 'state', checkbox: true, align: 'left', enabled: false, colspan:1 },
-                    { field: 'orderNumber', title: 'Order Number', sortable: false, align: 'left', colspan:1 },
-                    { field: 'title', title: 'Title', sortable: false, align: 'left', colspan:1 },
-                    { field: 'description', title: 'Description', sortable: false, align: 'left', colspan:1 }
+                    { field: 'state', checkbox: true, align: 'left', enabled: false, colspan: 1 },
+                    { field: 'orderNumber', title: 'Order Number', sortable: false, align: 'left', colspan: 1 },
+                    { field: 'title', title: 'Title', sortable: false, align: 'left', colspan: 1 },
+                    { field: 'description', title: 'Description', sortable: false, align: 'left', colspan: 1 }
                 ]
             ]
         });
@@ -73,5 +74,6 @@
 </script>
 
 
-@section Scripts {}
+@section Scripts {
+}
 

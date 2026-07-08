@@ -16,6 +16,8 @@ namespace WebOrderTracker.Business.Dtos
         public WorkOrderStatus Status { get; set; } = WorkOrderStatus.New;
         public WorkOrderPriority Priority { get; set; } = WorkOrderPriority.Medium;
 
+        public decimal AmountToPay { get; set; }
+
         public bool IsWorkPaid { get; set; }
 
         public string StatusString

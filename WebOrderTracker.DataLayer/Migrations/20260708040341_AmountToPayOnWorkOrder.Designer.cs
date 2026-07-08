@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebOrderTracker.DataLayer.Context;
 
@@ -11,9 +12,11 @@ using WebOrderTracker.DataLayer.Context;
 namespace WebOrderTracker.DataLayer.Migrations
 {
     [DbContext(typeof(WoTrackerDbContext))]
-    partial class WoTrackerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260708040341_AmountToPayOnWorkOrder")]
+    partial class AmountToPayOnWorkOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -168,7 +171,7 @@ namespace WebOrderTracker.DataLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<decimal>("AmountToPay")
+                    b.Property<decimal>("AmoutToPay")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid?>("AssetId")

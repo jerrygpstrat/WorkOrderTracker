@@ -22,6 +22,9 @@ namespace WebOrderTracker.DataLayer.Entities
 
         public bool IsWorkPaid { get; set; }
 
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal AmountToPay { get; set; }
+
 
         // Dates
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

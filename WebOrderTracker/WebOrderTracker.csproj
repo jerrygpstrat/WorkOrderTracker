@@ -20,6 +20,7 @@
     <None Include="wwwroot\assets\bt\bootstrap-table.js" />
     <None Include="wwwroot\assets\bt\bt-export.js" />
     <None Include="wwwroot\assets\bt\table-export.js" />
+    <None Include="wwwroot\assets\bt\BootstrapTableCommonJs.js" />
   </ItemGroup>
 
   <ItemGroup>

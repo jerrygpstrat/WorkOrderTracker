@@ -30,5 +30,9 @@ namespace WebOrderTracker.Business.Dtos.Requests
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime ExpectedPayDate { get; set; }
+
+        [Range(0.01, double.MaxValue, ErrorMessage = "The amount must be greater than zero.")]
+        [Required(ErrorMessage = "Please enter the amount to pay by customer for the work order.")]
+        public decimal AmountToPay { get; set; }
     }
 }
